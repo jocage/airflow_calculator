@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Калькулятор обратного расчета диаметров отверстий"
+    />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Airflow Calculator - Обратный расчет</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Обратный расчет диаметров</h1>
+
+      <div class="tabs">
+        <a href="index.html" class="tab">Прямой расчет</a>
+        <a href="reverse.html" class="tab active">Обратный расчет</a>
+      </div>
+
+      <div class="input-group">
+        <label for="target-diameter">Целевой эквивалентный диаметр (мм):</label>
+        <input
+          type="number"
+          id="target-diameter"
+          step="0.01"
+          placeholder="Введите диаметр"
+        />
+      </div>
+
+      <div class="slider-container">
+        <label for="holes-count">Количество отверстий:</label>
+        <input
+          type="range"
+          id="holes-count"
+          min="2"
+          max="4"
+          value="2"
+          step="1"
+        />
+        <div class="slider-value" id="holes-value">2 отверстия</div>
+      </div>
+
+      <div class="input-group">
+        <label>Тип расчета:</label>
+        <div class="radio-group">
+          <label class="radio-label">
+            <input type="radio" name="calculation-type" value="equal" checked />
+            Одинаковые диаметры
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="calculation-type" value="custom" />
+            Произвольное соотношение
+          </label>
+        </div>
+      </div>
+
+      <div id="ratio-container" style="display: none">
+        <div class="input-group">
+          <label for="ratio">Соотношение между отверстиями:</label>
+          <input type="text" id="ratio" placeholder="Например: 1:2 или 1:2:1" />
+          <small
+            >Укажите соотношение через двоеточие (например 1:2 или 1:1:2)</small
+          >
+        </div>
+      </div>
+
+      <button id="calculate-reverse-btn">Рассчитать</button>
+
+      <div class="solutions" id="solutions"></div>
+    </div>
+    <script type="text/javascript" src="js/reverse.js"></script>
+  </body>
+</html>
