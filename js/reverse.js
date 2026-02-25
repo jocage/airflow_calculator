@@ -14,12 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Update holes count text when slider changes
   holesCountSlider.addEventListener('input', () => {
     const count = holesCountSlider.value;
-    const text =
-      count === '1'
-        ? 'отверстие'
-        : count >= '2' && count <= '4'
-        ? 'отверстия'
-        : 'отверстий';
+    const text = count === '1' ? 'hole' : 'holes';
     holesValueText.textContent = `${count} ${text}`;
   });
 
@@ -112,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (ratios.length !== holesCount || ratios.some(isNaN)) {
       throw new Error(
-        `Пожалуйста, укажите ${holesCount} числа через двоеточие`
+        `Please specify ${holesCount} numbers separated by colons`
       );
     }
 
@@ -136,8 +131,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function displaySolutions(diameters, type) {
     const title =
       type === 'equal'
-        ? 'Отверстия с одинаковым диаметром'
-        : 'Отверстия с указанным соотношением';
+        ? 'Holes with equal diameter'
+        : 'Holes with specified ratio';
 
     const solutionHTML = `
       <div class="solution-card">
@@ -146,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ${diameters
             .map(
               (d, i) => `
-            <div class="solution-value">Д${i + 1}: ${d} мм</div>
+            <div class="solution-value">D${i + 1}: ${d} mm</div>
           `
             )
             .join('')}
@@ -168,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const actualDiameter21 = getEquivalentDiameter(roundedRatio21);
 
       solutions.push({
-        title: `Вариант 1: Соотношение 2:1 (экв. диаметр: ${actualDiameter21} мм)`,
+        title: `Option 1: Ratio 2:1 (equiv. diameter: ${actualDiameter21} mm)`,
         diameters: roundedRatio21,
       });
 
@@ -177,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const actualDiameter32 = getEquivalentDiameter(roundedRatio32);
 
       solutions.push({
-        title: `Вариант 2: Соотношение 3:2 (экв. диаметр: ${actualDiameter32} мм)`,
+        title: `Option 2: Ratio 3:2 (equiv. diameter: ${actualDiameter32} mm)`,
         diameters: roundedRatio32,
       });
     } else if (holesCount === 3) {
@@ -191,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const actualDiameter211 = getEquivalentDiameter(roundedRatio211);
 
       solutions.push({
-        title: `Вариант 1: Соотношение 2:1:1 (экв. диаметр: ${actualDiameter211} мм)`,
+        title: `Option 1: Ratio 2:1:1 (equiv. diameter: ${actualDiameter211} mm)`,
         diameters: roundedRatio211,
       });
 
@@ -204,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const actualDiameter121 = getEquivalentDiameter(roundedRatio121);
 
       solutions.push({
-        title: `Вариант 2: Соотношение 1:2:1 (экв. диаметр: ${actualDiameter121} мм)`,
+        title: `Option 2: Ratio 1:2:1 (equiv. diameter: ${actualDiameter121} mm)`,
         diameters: roundedRatio121,
       });
     } else if (holesCount === 4) {
@@ -218,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const actualDiameter1122 = getEquivalentDiameter(roundedRatio1122);
 
       solutions.push({
-        title: `Вариант 1: Соотношение 1:1:2:2 (экв. диаметр: ${actualDiameter1122} мм)`,
+        title: `Option 1: Ratio 1:1:2:2 (equiv. diameter: ${actualDiameter1122} mm)`,
         diameters: roundedRatio1122,
       });
 
@@ -231,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const actualDiameter2112 = getEquivalentDiameter(roundedRatio2112);
 
       solutions.push({
-        title: `Вариант 2: Соотношение 2:1:1:2 (экв. диаметр: ${actualDiameter2112} мм)`,
+        title: `Option 2: Ratio 2:1:1:2 (equiv. diameter: ${actualDiameter2112} mm)`,
         diameters: roundedRatio2112,
       });
     }
@@ -245,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ${solution.diameters
               .map(
                 (d, i) => `
-              <div class="solution-value">Д${i + 1}: ${d} мм</div>
+              <div class="solution-value">D${i + 1}: ${d} mm</div>
             `
               )
               .join('')}
@@ -271,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Validate input
     if (isNaN(targetDiameter) || targetDiameter <= 0) {
-      solutionsContainer.innerHTML = `<div class="error-message">Пожалуйста, введите положительное значение диаметра</div>`;
+      solutionsContainer.innerHTML = `<div class="error-message">Please enter a positive diameter value</div>`;
       return;
     }
 
@@ -287,12 +282,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         solutionsHTML = `
           <div class="solution-card">
-            <div class="solution-title">Отверстия с одинаковым диаметром (экв. диаметр: ${actualDiameter} мм)</div>
+            <div class="solution-title">Holes with equal diameter (equiv. diameter: ${actualDiameter} mm)</div>
             <div class="solution-values">
               ${roundedDiameters
                 .map(
                   (d, i) => `
-                <div class="solution-value">Д${i + 1}: ${d} мм</div>
+                <div class="solution-value">D${i + 1}: ${d} mm</div>
               `
                 )
                 .join('')}
@@ -310,7 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const ratioString = ratioInput.value.trim();
 
         if (!ratioString) {
-          solutionsContainer.innerHTML = `<div class="error-message">Пожалуйста, укажите соотношение</div>`;
+          solutionsContainer.innerHTML = `<div class="error-message">Please specify a ratio</div>`;
           return;
         }
 
@@ -325,12 +320,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         solutionsHTML = `
           <div class="solution-card">
-            <div class="solution-title">Отверстия с соотношением ${ratioString} (экв. диаметр: ${actualDiameter} мм)</div>
+            <div class="solution-title">Holes with ratio ${ratioString} (equiv. diameter: ${actualDiameter} mm)</div>
             <div class="solution-values">
               ${roundedDiameters
                 .map(
                   (d, i) => `
-                <div class="solution-value">Д${i + 1}: ${d} мм</div>
+                <div class="solution-value">D${i + 1}: ${d} mm</div>
               `
                 )
                 .join('')}
