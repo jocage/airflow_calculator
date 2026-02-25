@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Калькулятор обратного расчета диаметров отверстий"
+      content="Reverse hole diameter calculator"
     />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,29 +14,29 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-    <title>Airflow Calculator - Обратный расчет</title>
+    <title>Airflow Calculator - Reverse Calculation</title>
   </head>
   <body>
     <div class="container">
-      <h1>Обратный расчет диаметров</h1>
+      <h1>Reverse Diameter Calculator</h1>
 
       <div class="tabs">
-        <a href="index.html" class="tab">Прямой расчет</a>
-        <a href="reverse.html" class="tab active">Обратный расчет</a>
+        <a href="index.html" class="tab">Forward Calculation</a>
+        <a href="reverse.html" class="tab active">Reverse Calculation</a>
       </div>
 
       <div class="input-group">
-        <label for="target-diameter">Целевой эквивалентный диаметр (мм):</label>
+        <label for="target-diameter">Target equivalent diameter (mm):</label>
         <input
           type="number"
           id="target-diameter"
           step="0.01"
-          placeholder="Введите диаметр"
+          placeholder="Enter diameter"
         />
       </div>
 
       <div class="slider-container">
-        <label for="holes-count">Количество отверстий:</label>
+        <label for="holes-count">Number of holes:</label>
         <input
           type="range"
           id="holes-count"
@@ -45,34 +45,34 @@
           value="2"
           step="1"
         />
-        <div class="slider-value" id="holes-value">2 отверстия</div>
+        <div class="slider-value" id="holes-value">2 holes</div>
       </div>
 
       <div class="input-group">
-        <label>Тип расчета:</label>
+        <label>Calculation type:</label>
         <div class="radio-group">
           <label class="radio-label">
             <input type="radio" name="calculation-type" value="equal" checked />
-            Одинаковые диаметры
+            Equal diameters
           </label>
           <label class="radio-label">
             <input type="radio" name="calculation-type" value="custom" />
-            Произвольное соотношение
+            Custom ratio
           </label>
         </div>
       </div>
 
       <div id="ratio-container" style="display: none">
         <div class="input-group">
-          <label for="ratio">Соотношение между отверстиями:</label>
-          <input type="text" id="ratio" placeholder="Например: 1:2 или 1:2:1" />
+          <label for="ratio">Ratio between holes:</label>
+          <input type="text" id="ratio" placeholder="e.g. 1:2 or 1:2:1" />
           <small
-            >Укажите соотношение через двоеточие (например 1:2 или 1:1:2)</small
+            >Specify the ratio with colons (e.g. 1:2 or 1:1:2)</small
           >
         </div>
       </div>
 
-      <button id="calculate-reverse-btn">Рассчитать</button>
+      <button id="calculate-reverse-btn">Calculate</button>
 
       <div class="solutions" id="solutions"></div>
     </div>

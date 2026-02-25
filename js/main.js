@@ -35,19 +35,19 @@ function calculateEquivalent() {
   const resultEl = document.getElementById('result');
 
   if (hasEmptyInputs) {
-    resultEl.textContent = 'Пожалуйста, заполните все поля диаметров';
+    resultEl.textContent = 'Please fill in all diameter fields';
     resultEl.classList.add('error-message');
     return;
   }
 
   if (invalidInputs) {
-    resultEl.textContent = 'Все диаметры должны быть положительными числами';
+    resultEl.textContent = 'All diameters must be positive numbers';
     resultEl.classList.add('error-message');
     return;
   }
 
   const equivalentDiameter = calculateEquivalentDiameter(diameters);
-  resultEl.textContent = `Эквивалентный диаметр: ${equivalentDiameter} мм`;
+  resultEl.textContent = `Equivalent diameter: ${equivalentDiameter} mm`;
   resultEl.classList.remove('error-message');
 
   // Add animation effect
@@ -66,14 +66,14 @@ function addHole() {
 
   const label = document.createElement('label');
   label.setAttribute('for', `diameter${holeCount}`);
-  label.textContent = `Диаметр отверстия ${holeCount} (мм):`;
+  label.textContent = `Hole diameter ${holeCount} (mm):`;
 
   const input = document.createElement('input');
   input.type = 'number';
   input.id = `diameter${holeCount}`;
   input.className = 'diameter-input';
   input.step = '0.01';
-  input.placeholder = 'Введите диаметр';
+  input.placeholder = 'Enter diameter';
 
   // Add event listener for validation
   input.addEventListener('input', function () {
@@ -99,7 +99,7 @@ function addHole() {
 
 function removeHole() {
   if (holeCount <= 2) {
-    alert('Минимальное количество отверстий: 2');
+    alert('Minimum number of holes: 2');
     return;
   }
 
