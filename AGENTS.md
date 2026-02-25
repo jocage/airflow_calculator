@@ -7,10 +7,10 @@ This is a **static HTML/CSS/JS** project (Airflow Calculator) with no build step
 ### Running the dev server
 
 ```bash
-python3 -m http.server 8080
+python3 -m http.server 3000
 ```
 
-Then open `http://localhost:8080/index.html` in a browser. Both `index.html` (forward calculation) and `reverse.html` (reverse calculation) are entry points.
+Then open `http://localhost:3000/index.html` in a browser. Both `index.html` (forward calculation) and `reverse.html` (reverse calculation) are entry points.
 
 ### Lint / Test / Build
 
